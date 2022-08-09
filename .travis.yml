@@ -1,0 +1,10 @@
+language: node_js
+
+services:
+  - docker
+
+before_install:
+  - docker build -f Dockerfile.dev -t johanrykke/productionflow .
+
+script:
+  - docker run -e CI=true johanrykke/productionflow npm run test
